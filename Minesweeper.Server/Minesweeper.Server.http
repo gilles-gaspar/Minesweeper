@@ -1,0 +1,6 @@
+@Minesweeper.Server_HostAddress = http://localhost:5129
+
+GET {{Minesweeper.Server_HostAddress}}/minesweeper/
+Accept: application/json
+
+###

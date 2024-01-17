@@ -1,0 +1,35 @@
+<ng-container *ngIf="isRevealed; else noReveal">
+  <ng-container *ngIf="isMine; else nothing">
+    <img src="/assets/mine.png" alt="Mine" />
+  </ng-container>
+  <ng-template #nothing>
+    <img src="/assets/Minesweeper_{{ neighbourMines }}.png" alt="Flag" />
+  </ng-template>
+</ng-container>
+
+<ng-template #noReveal>
+  <button
+    pressEventIndicator
+    type="button"
+    (click)="onClick($event)"
+    (contextmenu)="onContextMenu($event)"
+    [ngSwitch]="isFlagged"
+  >
+    <img
+      *ngSwitchCase="'FlagStatus.Flag'"
+      src="/assets/Minesweeper_flag.png"
+      alt="{{ isFlagged }}"
+    />
+    <img
+      *ngSwitchCase="'2'"
+      src="/assets/Minesweeper_questionMark.png"
+      alt="{{ isFlagged }}"
+    />
+    <img
+      *ngSwitchDefault
+      src="/assets/Minesweeper_unopened_square.png"
+      alt="{{ isFlagged }}"
+    />
+    {{ row }} - {{ column }} - {{ isFlagged }}
+  </button>
+</ng-template>

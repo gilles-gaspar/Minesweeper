@@ -1,0 +1,38 @@
+<div>
+  <section>
+    <header>
+      <div>
+        <div>
+          <img
+            src="/assets/Minesweeper_flag.png"
+            alt="Amount of flags left"
+          />
+          <span>{{
+            _board.remainingMine
+          }}</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <app-board   
+      [mineCount] = "_board.mineCount"
+      [width] = "_board.width"
+      [height] = "_board.height"
+      [cells] = "_board.cells"
+      [status] = "_board.status"
+      [remainingMine] = "_board.remainingMine">
+     </app-board>
+    </main>
+
+    <footer>
+      <button
+        type="button"
+        (click)="startNewGame(5, 5, 5)"
+        #resetButton
+      >
+        New game
+      </button>
+    </footer>
+  </section>
+</div>
