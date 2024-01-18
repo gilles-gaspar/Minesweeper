@@ -6,5 +6,5 @@ export interface Board {
     height:number;
     cells: Cell[][];
     status: 'inProgress' | 'failed' | 'completed';
-    remainingMine:number;
+    remainingMines:number;
 }

@@ -8,7 +8,7 @@
     public class Cell(int row, int column)
     {
         private bool _isMine;
-        
+
         public bool IsMine
         {
             get { return _isMine && IsRevealed; }
@@ -20,6 +20,12 @@
         public bool IsRevealed { get; set; }
         public int NeighbourMines { get; set; }
         public FlagStatus IsFlagged { get; set; }
+
+
+        internal bool GetIsMine()
+        {
+            return _isMine;
+        }
 
         /// <summary>
         /// Change the flag of the cell

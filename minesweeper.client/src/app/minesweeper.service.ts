@@ -11,9 +11,10 @@ export class MinesweeperService {
 
   constructor(private http: HttpClient) {}
 
-  get boardHasChanged$(): Observable<Board> {
+  get boardHasChanged(): Observable<Board> {
     return this._boardData$.asObservable();
   }
+  
   startNewGame(row: number, column: number, mines: number) {
     this.http
       .post(

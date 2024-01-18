@@ -1,9 +1,24 @@
 <ng-container *ngIf="isRevealed; else noReveal">
   <ng-container *ngIf="isMine; else nothing">
-    <img src="/assets/mine.png" alt="Mine" />
+    <img src="/assets/mine.png" alt="Mine" width="38px" height="38px" />
   </ng-container>
   <ng-template #nothing>
-    <img src="/assets/Minesweeper_{{ neighbourMines }}.png" alt="Flag" />
+    <ng-container *ngIf="isFlagged != 3; else wrong">
+      <img
+      src="/assets/Minesweeper_{{ neighbourMines }}.png"
+      width="38px"
+      height="38px"
+    />
+  </ng-container>
+</ng-template>
+
+  <ng-template #wrong>
+    <img
+      src="/assets/wrong-mine.png"
+      alt="{{ row }} - {{ column }} - {{ isFlagged }}"
+      width="38px"
+      height="38px"
+    />
   </ng-template>
 </ng-container>
 
@@ -16,20 +31,25 @@
     [ngSwitch]="isFlagged"
   >
     <img
-      *ngSwitchCase="'FlagStatus.Flag'"
+      *ngSwitchCase="1"
       src="/assets/Minesweeper_flag.png"
-      alt="{{ isFlagged }}"
+      alt="{{ row }} - {{ column }} - {{ isFlagged }}"
+      width="38px"
+      height="38px"
     />
     <img
-      *ngSwitchCase="'2'"
+      *ngSwitchCase="2"
       src="/assets/Minesweeper_questionMark.png"
-      alt="{{ isFlagged }}"
+      alt="{{ row }} - {{ column }} - {{ isFlagged }}"
+      width="38px"
+      height="38px"
     />
     <img
       *ngSwitchDefault
       src="/assets/Minesweeper_unopened_square.png"
-      alt="{{ isFlagged }}"
+      alt="{{ row }} - {{ column }} - {{ isFlagged }}"
+      width="38px"
+      height="38px"
     />
-    {{ row }} - {{ column }} - {{ isFlagged }}
   </button>
 </ng-template>

@@ -12,5 +12,5 @@ export class BoardComponent {
   @Input() height: number = 5;
   @Input() cells: Cell[][] = [];
   @Input() status: 'inProgress' | 'failed' | 'completed' = 'inProgress';
-  @Input() remainingMine: number = 5;
+  @Input() remainingMines: number = 5;
 }

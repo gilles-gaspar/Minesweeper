@@ -160,7 +160,7 @@
 
         private void CheckComplete()
         {
-            var emptyCells = this._cells.Where(c => !c.IsRevealed && !c.IsMine);
+            var emptyCells = this._cells.Where(c => !c.IsRevealed && !c.GetIsMine());
             if (!emptyCells.Any())
             {
                 this.Status = GameStatus.Completed;
@@ -170,7 +170,11 @@
 
         private void RevealAll()
         {
-            var cells = this._cells.Where(c => !c.IsRevealed);
+            var cells = this._cells.Where(c => !c.IsRevealed && !c.GetIsMine() && c.IsFlagged == FlagStatus.Flag);
+            foreach (var cell in cells)
+                cell.IsFlagged = FlagStatus.WrongFlag;
+
+            cells = this._cells.Where(c => !c.IsRevealed);
             foreach (var cell in cells)
                 cell.IsRevealed = true;
         }
